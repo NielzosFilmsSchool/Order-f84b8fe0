@@ -14,24 +14,24 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-     $stmt = $pdo->query('SELECT * FROM series WHERE title LIKE "'.$_GET["title"].'"');
-     while($row = $stmt->fetch()) {
-          echo "<h1>".$row["title"]." - ".$row["rating"]."</h1>";
-          if($row["has_won_awards"] == 1) {
-               echo "<b>Awards</b> Ja<br>";
-          } else {
-               echo "<b>Awards</b> Nee<br>";
-          }
-          echo "<b>Seasons</b> ".$row["seasons"]."<br>";
-          echo "<b>Country</b> ".$row["country"]."<br>";
-          echo "<b>Language</b> ".$row["language"]."<br>";
-          echo "<p>".$row["description"]."</p>";
+    $pdo = new PDO($dsn, $user, $pass, $options);
+    $stmt = $pdo->query('SELECT * FROM series WHERE title LIKE "'.$_GET["title"].'"');
+    while($row = $stmt->fetch()) {
+        echo "<h1>".$row["title"]." - ".$row["rating"]."</h1>";
+        if($row["has_won_awards"] == 1) {
+            echo "<b>Awards</b> Ja<br>";
+        } else {
+            echo "<b>Awards</b> Nee<br>";
+        }
+        echo "<b>Seasons</b> ".$row["seasons"]."<br>";
+        echo "<b>Country</b> ".$row["country"]."<br>";
+        echo "<b>Language</b> ".$row["language"]."<br>";
+        echo "<p>".$row["description"]."</p>";
           
-     }
+    }
      
 } catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
 ?>
