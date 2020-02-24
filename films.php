@@ -16,8 +16,7 @@ $options = [
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
      $stmt = $pdo->query('SELECT * FROM films WHERE titel LIKE "'.$_GET["title"].'"');
-     while ($row = $stmt->fetch())
-     {
+     while($row = $stmt->fetch()) {
         echo "<h1>".$row["titel"]." - ".$row["duur"]." minuten</h1>";
         echo "<b>Datum van uitkomst</b> ".$row["datum_uitkomst"]."<br>";
         echo "<b>Land van uitkomst</b> ".$row["land_uitkomst"]."<br>";
@@ -25,7 +24,7 @@ try {
           
      }
      
-} catch (\PDOException $e) {
+} catch(\PDOException $e) {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
